@@ -33,8 +33,14 @@ export default function Document() {
 
       <body>
      
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWHQ36H2"
-height="0" width="0"></iframe></noscript>
+      <noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-KWHQ36H2"
+    height="0"
+    width="0"
+    style={{ display: 'none', visibility: 'hidden' }}
+  ></iframe>
+</noscript>
 
         <Main />
         <NextScript />
