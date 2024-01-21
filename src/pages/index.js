@@ -17,21 +17,21 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <button style={{ background: "red", padding: "10px", color: "#fff" }}>
+          <button style={{ background: "red", padding: "10px", color: "#fff" }} className="hiviodh">
             App Store
           </button>
 
           <button
             style={{ background: "#000", padding: "10px", color: "#fff" }}
-          >
+            className="hiviodh" >
             play store 
           </button>
 
-<Link  href={'/demo1'}    >  demo1</Link>
+<Link  href={'/demo1'}>  demo1</Link>
 
+<Link  href={'/demo2'}>  demo2</Link>
 
-
-<Link  href={'/demo2'}    >  demo2</Link>
+<Link  href={'/styleguide'}>  Style Guide</Link>
 
 
         </div>

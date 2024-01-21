@@ -1,24 +1,25 @@
 import React from "react";
 import Comp from '@/components/TestComponent/Comp'
+import Link from 'next/link'
 export default function Styleguide() {
 
   const handleClick = () => {
     // Push a custom event to the data layer
     window.dataLayer.push({
-      event: 'exploreMoreButtonClick',
-      buttonLabel: 'Explore More Tattoo',
+      event: 'gtm.dom',
+      buttonLabel: 'App',
     });
   
     // Additional button click logic can go here
   };
 
   
-  
+
   return (
     <div>
       <div style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <div style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <button style={{ background: "red", padding: "10px", color: "#fff" }}>
+          <button style={{ background: "red", padding: "10px", color: "#fff" }} >
             App Store
           </button>
 
@@ -28,6 +29,16 @@ export default function Styleguide() {
             play store 
           </button>
         </div>
+
+
+
+ 
+        <Link  href={'/tattoo-fur'}>tattooFurren GERMAN PAGE</Link>
+
+
+
+
+
 
         
         <p> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchange</p>
