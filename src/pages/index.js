@@ -16,14 +16,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
+
+
+
+
+
+
+
+
         <div style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <button style={{ background: "red", padding: "10px", color: "#fff" }} className="hiviodh">
+
+
+      <Link  href={'/aboutus'}>  about us </Link>
+
+<Link  href={'/contactus'}>  contact us </Link>
+
+
+
+          <button style={{ background: "red", padding: "10px", color: "#fff" }} className="hiIOS"> 
             App Store
           </button>
 
           <button
             style={{ background: "#000", padding: "10px", color: "#fff" }}
-            className="hiviodh" >
+            className="hiAndroid" >
             play store 
           </button>
 
@@ -32,6 +48,13 @@ export default function Home() {
 <Link  href={'/demo2'}>  demo2</Link>
 
 <Link  href={'/styleguide'}>  Style Guide</Link>
+
+
+
+<Link  href={'/specialpage'} className="idmee">special pagesss</Link>
+
+
+
 
 
         </div>
