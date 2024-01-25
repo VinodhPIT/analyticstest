@@ -16,7 +16,7 @@ const authOptions = {
           let value = { username, password };
 
           const response = await fetch(
-            `http://14.140.178.211:8000/analytics/login`,
+            `http://14.14211:8000/analytics/login`,
             {
               method: "POST",
               headers: {
