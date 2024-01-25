@@ -54,6 +54,11 @@ export default function Home() {
 <Link  href={'/specialpage'} className="idmee">special pagesss</Link>
 
 
+<Link  href={'/tracking1'} >Tracking1</Link>
+
+
+<Link  href={'/allbuttons'} >Tracki All buttons</Link>
+
 
 
 
