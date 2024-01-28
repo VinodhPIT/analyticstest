@@ -27,10 +27,11 @@ export default function Home() {
         <div style={{ flexDirection: "row", justifyContent: "space-between" }}>
 
 
-      <Link  href={'/aboutus'}>  about us </Link>
+      <Link  href={'/aboutus'} className="headermenu">  about us </Link>
 
-<Link  href={'/contactus'}>  contact us </Link>
+<Link  href={'/contactus'} className="headermenu">  contact us </Link>
 
+<Link  href={'/styleguide'} className="headermenu">  Style Guide</Link>
 
 
           <button style={{ background: "red", padding: "10px", color: "#fff" }} className="hiIOS"> 
@@ -47,7 +48,6 @@ export default function Home() {
 
 <Link  href={'/demo2'}>  demo2</Link>
 
-<Link  href={'/styleguide'}>  Style Guide</Link>
 
 
 
