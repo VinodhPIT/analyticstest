@@ -62,6 +62,12 @@ export default function Home() {
 
 
 
+
+<h5>{process.env.apiDomain}hiii  my api is </h5>
+
+
+
+
         </div>
       </main>
     </>
