@@ -54,13 +54,7 @@ const Login = () => {
           <div className={styles.login_main_wrap}>
             <div className="header_logo">
               <Link href="#">
-                <Image
-                  src="/Inckd-logo-footer-black.svg"
-                  alt="Logo"
-                  width="105"
-                  height="31"
-                  priority
-                />
+              {`${process.env.apiDomain}/analytics/login`}
               </Link>
             </div>
             <div className={styles.sign_in_form}>
@@ -120,7 +114,7 @@ const Login = () => {
                         Login
                       </button>
                       {loader ? (
-                        <Image src="/6.gif" alt="loader" width={25} height={25} />
+                        <h4>cdcdc</h4>
                       ) : null}{" "}
                     </div>
                     
