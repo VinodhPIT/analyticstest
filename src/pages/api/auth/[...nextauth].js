@@ -16,7 +16,7 @@ const authOptions = {
           let value = { username, password };
 
           const response = await fetch(
-            `${process.env.apiDomain}/analytics/login`,
+            `https://admin.inckd.com/analytics/login`,
             {
               method: "POST",
               headers: {
