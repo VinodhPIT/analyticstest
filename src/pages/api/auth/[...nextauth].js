@@ -16,7 +16,7 @@ const authOptions = {
           let value = { username, password };
 
           const response = await fetch(
-            `http://14.14211:8000/analytics/login`,
+            `${process.env.apiDomain}/analytics/login`,
             {
               method: "POST",
               headers: {
