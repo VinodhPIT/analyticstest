@@ -10,7 +10,6 @@ import CustomerDetails from "@/analyticsComponents/customerDetails/customerDetai
 import TotalCustomers from "@/analyticsComponents/totalCustomers/totalCustomers";
 import PieChart from "@/analyticsComponents/pieChart/chart";
 import CustomerConversion from "@/analyticsComponents/customerConversion/customerConversion";
-
 import { getSession } from "next-auth/react";
 import PaymentComparison from "@/analyticsComponents/paymentComparisonChart/paymentComparison";
 import ComparisonChart from "@/analyticsComponents/comparisonPiechart/comparisonChart";
