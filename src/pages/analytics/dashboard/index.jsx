@@ -62,7 +62,6 @@ export default function Analytics({ data }) {
 export async function getServerSideProps(context) {
 
 
-
   try {
     const [data, customerJoinigData] = await Promise.all([
       analyticsCustomerCount('mbKrL6OCXFhGZeiR3QqsGwv9ebehoY'),
@@ -72,7 +71,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         data: {
-          chartData: customerJoinigData ,
+          chartData: customerJoinigData,
                  },
       },
     };
