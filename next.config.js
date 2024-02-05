@@ -2,10 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    apiDomain: process.env.VERCEL ?"https://apiadmin.inckd.com" :"https://admin.inckd.com",
+    apiDomain: "https://admin.inckd.com",
     
   },
-
 
 }
 
