@@ -8,6 +8,7 @@ import Select from "react-select";
 ChartJS.register(Tooltip, Legend);
 
 const filterChartDataByYear = (chartData, year) => {
+
   return chartData.filter((item) => new Date(item.created_date).getFullYear() === year);
 };
 
