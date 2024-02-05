@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import styles from "./login.module.css";
 import { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import * as Yup from "yup";
 
 const LoginSchema = Yup.object().shape({
@@ -23,7 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (data?.user && status === "authenticated") {
-      router.push("/analytics/customer");
+      router.push("/analytics/daschboard");
     }
   }, [data, status]);
 
