@@ -40,13 +40,13 @@ export async function getApiCall(endpoint) {
 }
 
 export async function analyticsGetApiCall(endpoint, token) {
-  let tok ="mbKrL6OCXFhGZeiR3QqsGwv9ebehoY"
+  
   try {
     const response = await fetch(`${process.env.apiDomain}${endpoint}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${tok}`
+        "Authorization": `Bearer ${token}`
       },
     });
     if (!response.ok) {
