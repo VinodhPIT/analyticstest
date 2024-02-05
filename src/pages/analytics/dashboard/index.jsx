@@ -23,41 +23,9 @@ export default function Analytics({ data }) {
   const { status, data: sessionData } = useSession();
 
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/analytics/login");
-    }
-  }, [status, router]);
 
  
 
-
-
-  const getValues = Object.values(data.genderCount);
-
-  const getKeys = Object.keys(data.genderCount).map((key) => {
-    switch (key) {
-      case "male_count":
-        return "Male";
-      case "female_count":
-        return "Female";
-      case "non_binary_count":
-        return "Other";
-      default:
-        return key;
-    }
-  });
-
-
-
-
-  const getColor = ["#1976D2", "#FF80FF", "#EAEAEA"];
-
-  const label = [
-    { id: 1, label: "Male", bgColor: "block_bg_blue_150" },
-    { id: 2, label: "Female", bgColor: "block_bg_pink_100" },
-    { id: 3, label: "Other", bgColor: "block_bg_gray_light_200" },
-  ];
 
 
 
@@ -93,39 +61,19 @@ export default function Analytics({ data }) {
 
 export async function getServerSideProps(context) {
 
-  const session = await getSession(context);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/analytics/login",
-        permanent: false,
-      },
-    };
-  }
 
   try {
     const [data, customerJoinigData] = await Promise.all([
-      analyticsCustomerCount(session.user.myToken),
-      analyticsCustomerLeadSourceCount(session.user.myToken),
+      analyticsCustomerCount('mbKrL6OCXFhGZeiR3QqsGwv9ebehoY'),
+      analyticsCustomerLeadSourceCount('mbKrL6OCXFhGZeiR3QqsGwv9ebehoY'),
     ]);
   
     return {
       props: {
         data: {
           chartData: customerJoinigData ?? [],
-          contactedWithNoOffer: data.contacted_with_no_offer || 0,
-          deletedCustomers: data.deleted || 0,
-          genderCount: data.gender || 0,
-          joinedFromApp: customerJoinigData.filter((custData)=> custData.lead_source==="APP").length || 0,
-          joinedFromWeb: customerJoinigData.filter((custData)=> custData.lead_source!=="APP").length || 0,
-          noCompletedOffer: data.customer_no_offer_completed || 0,
-          notContacted: data.no_contacted || 0,
-          referralUsedCustomers: data.referral_used_customer || 0,
-          sessionToken:session.user.myToken??'',
-          totalCustomers: data.total_count || 0,
-          voucherUserCustomers: data.voucher_used_customer || 0
-        },
+                 },
       },
     };
   } catch (error) {
