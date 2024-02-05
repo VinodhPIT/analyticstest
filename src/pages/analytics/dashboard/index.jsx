@@ -95,14 +95,6 @@ export async function getServerSideProps(context) {
 
   const session = await getSession(context);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/analytics/login",
-        permanent: false,
-      },
-    };
-  }
 
   try {
     const [data, customerJoinigData] = await Promise.all([
