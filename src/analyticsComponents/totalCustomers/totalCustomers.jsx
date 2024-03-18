@@ -3,18 +3,35 @@ import { Chart as ChartJS, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { processData } from "@/utils/monthlyDataGenerator";
 // import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import { parse, getYear } from 'date-fns';
+import moment from 'moment';
+
+
 import Select from "react-select";
 
 ChartJS.register(Tooltip, Legend);
 
-const filterChartDataByYear = (chartData, year) => {
 
-  return chartData.filter((item) => new Date(item.created_date).getFullYear() === year);
+
+
+
+
+
+const filterChartDataByYear = (chartData, year) => {
+  return chartData.filter((item) => {
+    try {
+      const dateObject = parseInt(moment(item.created_date).format('YYYY'), 10);
+      return dateObject === year;
+    } catch (error) {
+      return false;
+    }
+  });
 };
 
 
-const TotalCustomers = ({title, chartData}) => {
-  console.log(chartData ,"dscidsci0=s")
+const TotalCustomers = ({ title, chartData }) => {
+
+
 
   const [chartArray, setChartArray] = useState([]);
   const startYear = 2020;
@@ -28,14 +45,32 @@ const TotalCustomers = ({title, chartData}) => {
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const selectedOption = { value: selectedYear, label: selectedYear };
 
+
+
+
   useEffect(() => {
     const filteredArray = filterChartDataByYear(chartData, currentYear);
-
-    setChartArray(processData(filteredArray));
-  }, [currentYear, chartData]);
+    
+    const fff = processData(filteredArray);
+   
+    setChartArray((prevChartArray) => fff);
+  }, []);
 
   const labels = useMemo(
-    () => ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    () => [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
     []
   );
 
@@ -43,10 +78,23 @@ const TotalCustomers = ({title, chartData}) => {
     responsive: true,
     plugins: {
       legend: {
-        display: false, 
+        display: false,
       },
     },
     maintainAspectRatio: false,
+  };
+
+  const handleChange = (selectedOption) => {
+    const yearToFilter = selectedOption.value;
+ 
+    const filteredArray = filterChartDataByYear(chartData, yearToFilter);
+
+    console.log(filteredArray ,"filteredArray")
+
+    let ddvv = processData(filteredArray);
+
+    setChartArray(ddvv);
+    setSelectedYear(yearToFilter);
   };
 
   const data = {
@@ -58,15 +106,6 @@ const TotalCustomers = ({title, chartData}) => {
         backgroundColor: "#81C784",
       },
     ],
-  };
-
-  
-  const handleChange = (selectedOption) => {
-    const yearToFilter = selectedOption.value;
-    const filteredArray = filterChartDataByYear(chartData, yearToFilter);
-
-    setChartArray(processData(filteredArray));
-    setSelectedYear(yearToFilter);
   };
 
   return (
@@ -89,7 +128,7 @@ const TotalCustomers = ({title, chartData}) => {
 
         <div className=" justify_content_center align_item_center pb_12">
           <div className="db_chart_bar">
-           <Bar data={data} options={options} width={100} height={311} />
+            <Bar data={data} options={options} width={100} height={311} />
           </div>
         </div>
       </div>
