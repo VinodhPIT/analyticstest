@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef } from "react";
 import Image from "next/image";
 import { blurDataURL } from "@/constants/constant";
 import styles from "./style.module.css";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { SwipeEvent } from 'react-slick';
 
 export default function CarouselSection({
   title,
@@ -96,6 +97,27 @@ export default function CarouselSection({
 //     e.stopPropagation();
 //   };
 
+const [preventLink, setPreventLink] = useState(false);
+const touchStartXRef = useRef(null);
+const handleTouchStart = (e) => {
+    console.log("handleTouchStart",e)
+  touchStartXRef.current = e.touches[0].clientX;
+};
+const handleTouchEnd = (e) => {
+    console.log("handleTouchEnd",e)
+  const touchEndX = e.changedTouches[0].clientX;
+  const deltaX = touchStartXRef.current - touchEndX;
+  if (Math.abs(deltaX) > 50) {
+    setPreventLink(true);
+  }
+};
+const handleTouchMove = () => {
+    console.log("move")
+  setPreventLink(false);
+};
+
+
+
 
   return (
     <section className={`img_text_banner_box ${sectionBg}`}>
@@ -161,8 +183,11 @@ export default function CarouselSection({
                 <Slider
                   {...sliderSettings}
                   className="custom_slick_slider  fullwidthCarousel"
-                //   onTouchStart={handleSwipeStart} // Add this line to prevent link triggering on swipe
+                  onSwipe={(direction) => {
+              console.log(direction,"dcd")
+                  }}
 
+            
                 >
                   {datas.map((imgPath, index) => (
                     <div
@@ -171,11 +196,20 @@ export default function CarouselSection({
                       }`}
                       key={index}
                     >
-                      <Link href={imgPath.url}>
+                      <Link href={imgPath.url}
+                        onTouchStart={(e) => {
+                            console.log('dvkd;v',e)
+                            document.querySelectorAll('.listing_gridItem a').forEach(link => link.setAttribute('pointer-events', 'none'));
+                          }}
+                          onTouchEnd={() => {
+                            document.querySelectorAll('.listing_gridItem a').forEach(link => link.removeAttribute('pointer-events'));
+                          }}
+                        >
                         <div
                           className={`${"listing_grid_img_col"} ${
                             styles.listing_grid_img_col
                           }`}
+                          
                         >
                           <Image
                             src={imgPath.image}

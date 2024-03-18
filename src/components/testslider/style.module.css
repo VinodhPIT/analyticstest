@@ -13,6 +13,10 @@
     width: 100%;
   }
   
+  .listing_gridItem a {
+    pointer-events: auto;
+  }
+
   .listing_grid_img_col {
     margin: 0px 0px 0px 10px;
   }
